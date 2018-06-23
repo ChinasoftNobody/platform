@@ -2,7 +2,10 @@
  * Created by Administrator on 2018/6/19.
  */
 export const VideoServerKey = {
-    QUERY_BY_FILTER: 'queryByFilter'
+    QUERY_BY_FILTER: 'queryByFilter',
+    QUERY_TYPES: 'queryTypes',
+    QUERY_REGIONS: 'queryRegions'
+
 };
 export const VideoServerInfo = {
     host: 'localhost:8081',
@@ -12,6 +15,16 @@ export const VideoServerInfo = {
             name: 'queryByFilter',
             type: 'post',
             url: '/movie/movie/query'
+        },
+        {
+            name: 'queryTypes',
+            type: 'post',
+            url: '/movie/movie/types'
+        },
+        {
+            name: 'queryRegions',
+            type: 'post',
+            url: '/movie/movie/regions'
         }
     ]
 };

@@ -5,6 +5,7 @@ import {HttpClient, HttpResponse} from '@angular/common/http';
 import {DialogData} from '../bean/DialogData';
 import {Response} from '../bean/Responce';
 import {Observable} from 'rxjs';
+
 /**
  * Created by Administrator on 2017/5/28.
  */
@@ -20,17 +21,23 @@ export class HttpService {
 
     post(url: string, body: any, resolve?: (value: any) => void, failed?: (error: string) => void) {
         const loadingDialogRef = this.openLoadingDialog();
-        const response: Observable<HttpResponse<Response>> = this.httpClient.post<Response>(url, body);
-        response.subscribe((value) => {
+        const response: Observable<Response> = this.httpClient.post<Response>(url, body);
+        response.subscribe((result) => {
             loadingDialogRef.close();
-            if (value.status === 200) {
-                if (resolk
-                if (failed) {
-                    failed(value.message || '');
+            if (result.success) {
+                if (resolve) {
+                    resolve(result.result);
                 } else {
-                    console.error('System error');
+                    console.log(result.result);
+                }
+            } else {
+                if (failed) {
+                    failed(result.message || 'Business error');
+                } else {
+                    console.error('Business error' + result.message);
                 }
             }
+
         }, error => {
             console.error(error);
             loadingDialogRef.close();

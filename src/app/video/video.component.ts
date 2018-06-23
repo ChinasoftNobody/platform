@@ -3,6 +3,9 @@ import {HttpService} from '../common/http.service';
 import {VideoServer} from '../config/server.config';
 import {VideoServerKey} from '../config/video.server.info';
 import {PageEvent} from '@angular/material';
+import {a} from '@angular/core/src/render3';
+import {forEach} from '@angular/router/src/utils/collection';
+
 /**
  * Created by Administrator on 2018/6/19.
  */
@@ -20,17 +23,19 @@ export class VideoComponent implements OnInit {
         actor: '',
         director: '',
         page: {
-            length: 100,
+            length: 10000,
             pageIndex: 0,
             pageSize: 10,
             pageSizeOptions: [5, 10, 25, 100]
         }
     };
     movieInfo: any = {
-        types: [{name: 'Action', checked: false}, {name: 'Love', checked: false}, {name: 'Plot', checked: false}],
-        region: [{name: 'China', checked: false}, {name: 'America', checked: false}, {name: 'Japan', checked: false}],
+        types: [],
+        region: [],
     };
     movieList: any = [];
+    types: any = [];
+    regions: any = [];
 
     constructor(private http: HttpService,
                 private videoServer: VideoServer) {
@@ -77,6 +82,24 @@ export class VideoComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        this.queryTypes(this);
+        this.queryRegions(this);
         this.queryMovieByFilter(this);
+    }
+
+    private queryTypes(context: this) {
+        context.http.post(context.videoServer.getUrl(VideoServerKey.QUERY_TYPES), null, (value) => {
+            value.forEach((item) => {
+                context.movieInfo.types = [...context.movieInfo.types, {name: item, checked: false}];
+            });
+        });
+    }
+
+    private queryRegions(context: this) {
+        context.http.post(context.videoServer.getUrl(VideoServerKey.QUERY_REGIONS), null, (value) => {
+            value.forEach((item) => {
+                context.movieInfo.region = [...context.movieInfo.region, {name: item, checked: false}];
+            });
+        });
     }
 }
