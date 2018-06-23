@@ -1,0 +1,5 @@
+.video-content{ margin: 0 5%;min-height: 650px;padding: 40px 0 0 0;background-color: #FFFFFF}
+.video-content>.filter-content>*{width: 100%;}
+.movie-content,.movie-pagination{padding-top: 20px;}
+.search-button{height: 80px;}
+.movie-content>mat-grid-list>mat-grid-tile>mat-card{width: 100%;}
