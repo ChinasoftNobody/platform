@@ -1,9 +1,10 @@
 import {Injectable} from '@angular/core';
 import {AppLoadingComponent} from './app.loading.component';
 import {MatDialog, MatDialogConfig, MatDialogRef} from '@angular/material';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpResponse} from '@angular/common/http';
 import {DialogData} from '../bean/DialogData';
-import {Responce} from '../bean/Responce';
+import {Response} from '../bean/Responce';
+import {Observable} from 'rxjs';
 /**
  * Created by Administrator on 2017/5/28.
  */
@@ -13,27 +14,21 @@ export class HttpService {
     }
 
     private openLoadingDialog(): MatDialogRef<any, any> {
-        const dialogConfig: MatDialogConfig<DialogData> = {
-            data: null
-        };
+        const dialogConfig: MatDialogConfig<DialogData> = new MatDialogConfig<DialogData>();
         return this.dialog.open<any, DialogData, any>(AppLoadingComponent, dialogConfig);
     }
 
     post(url: string, body: any, resolve?: (value: any) => void, failed?: (error: string) => void) {
         const loadingDialogRef = this.openLoadingDialog();
-        this.httpClient.post<Responce>(url, body).subscribe(value => {
+        const response: Observable<HttpResponse<Response>> = this.httpClient.post<Response>(url, body);
+        response.subscribe((value) => {
             loadingDialogRef.close();
-            if (value.success) {
-                if (resolve) {
-                    resolve(value.result);
-                } else {
-                    console.log(value.result);
-                }
-            } else {
+            if (value.status === 200) {
+                if (resolk
                 if (failed) {
                     failed(value.message || '');
                 } else {
-                    cosole.erorr('System error');
+                    console.error('System error');
                 }
             }
         }, error => {
