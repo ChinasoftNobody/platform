@@ -26,16 +26,19 @@ import {MatListModule} from '@angular/material/list';
 import {DailyServer, VideoServer} from './config/server.config';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {MatButtonModule} from '@angular/material/button';
+import {MatTableModule} from '@angular/material/table';
+import {MatIconModule} from '@angular/material/icon';
+import {MovieComponent} from './video/detail/movie.component';
 
 @NgModule({
     declarations: [
-        AppComponent, CopyrightComponent, VideoComponent, IndexComponent, AppLoadingComponent
+        AppComponent, CopyrightComponent, VideoComponent, IndexComponent, AppLoadingComponent, MovieComponent
     ],
     imports: [
         BrowserModule, RouterModule, AppRouterModule, BrowserAnimationsModule, FormsModule, HttpClientModule,
         MatProgressSpinnerModule, MatGridListModule, MatFormFieldModule, MatInputModule, MatDialogModule, MatCardModule,
         MatExpansionModule, MatPaginatorModule, MatSelectModule, MatCheckboxModule, MatDividerModule, MatListModule,
-        MatButtonModule
+        MatButtonModule, MatTableModule, MatIconModule
     ],
     providers: [HttpService, DailyServer, VideoServer, HttpClient],
     bootstrap: [AppComponent],
@@ -43,4 +46,5 @@ import {MatButtonModule} from '@angular/material/button';
 })
 export class AppModule {
 }
+
 enableProdMode();

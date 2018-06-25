@@ -10,7 +10,7 @@ import {VideoServerInfo} from './video.server.info';
 export class DailyServer {
     getUrl(interfaceName: any) {
         return ServerInfo.protocol + '://' + ServerInfo.host
-            + ServerInfo.interfaces.find((value, index) => interfaceName === value.name).url;
+            + ServerInfo.interfaces.find((value) => interfaceName === value.name).url;
     }
 }
 
@@ -18,7 +18,7 @@ export class DailyServer {
 export class VideoServer {
     getUrl(interfaceName: any) {
         return VideoServerInfo.protocol + '://' + VideoServerInfo.host
-            + VideoServerInfo.interfaces.find((value, index) => interfaceName === value.name).url;
+            + VideoServerInfo.interfaces.find((value) => interfaceName === value.name).url;
     }
 }
 

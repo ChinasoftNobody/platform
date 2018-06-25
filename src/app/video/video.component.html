@@ -29,15 +29,16 @@
         <button mat-raised-button class="search-button" color="primary" (click)="search()" >Search</button>
     </div>
     <div class="movie-content">
-        <mat-grid-list cols="1" rowHeight="100px">
-            <mat-grid-tile *ngFor="let movie of movieList">
-                <mat-card>
-                    {{movie.name}}
-                </mat-card>
-            </mat-grid-tile>
-        </mat-grid-list>
+        <mat-list>
+            <mat-list-item class="movie-item" *ngFor="let movie of movieList" (click)="movieDetail(movie.id)">
+                <mat-icon mat-list-icon>movie</mat-icon>
+                <h4 mat-line>{{movie.name}}</h4>
+                <p mat-line>{{movie.translateName}} </p>
+                <mat-divider></mat-divider>
+            </mat-list-item>
+        </mat-list>
     </div>
     <div class="movie-pagination">
-        <mat-paginator (page)="pageChange($event)" [length]="filter.page.length" [pageSize]="filter.page.pageSize" [pageSizeOptions]="filter.page.pageSizeOptions"></mat-paginator>
+        <mat-paginator (page)="pageChange($event)" [length]="movieLength" [pageSize]="filter.page.pageSize" [pageSizeOptions]="filter.page.pageSizeOptions"></mat-paginator>
     </div>
 </div>

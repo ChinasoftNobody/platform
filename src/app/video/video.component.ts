@@ -3,8 +3,8 @@ import {HttpService} from '../common/http.service';
 import {VideoServer} from '../config/server.config';
 import {VideoServerKey} from '../config/video.server.info';
 import {PageEvent} from '@angular/material';
-import {a} from '@angular/core/src/render3';
-import {forEach} from '@angular/router/src/utils/collection';
+import {Movie} from '../bean/Movie';
+import {ActivatedRoute, Router} from '@angular/router';
 
 /**
  * Created by Administrator on 2018/6/19.
@@ -25,20 +25,21 @@ export class VideoComponent implements OnInit {
         page: {
             length: 10000,
             pageIndex: 0,
-            pageSize: 10,
-            pageSizeOptions: [5, 10, 25, 100]
+            pageSize: 20,
+            pageSizeOptions: [20]
         }
     };
     movieInfo: any = {
         types: [],
         region: [],
     };
-    movieList: any = [];
-    types: any = [];
-    regions: any = [];
+    movieList: Array<Movie> = [];
+    movieLength: Number = 0;
 
     constructor(private http: HttpService,
-                private videoServer: VideoServer) {
+                private videoServer: VideoServer,
+                private router: Router,
+                private activedRouter: ActivatedRoute) {
     }
 
     /**
@@ -59,8 +60,13 @@ export class VideoComponent implements OnInit {
             }
         });
         context.http.post(context.videoServer.getUrl(VideoServerKey.QUERY_BY_FILTER), context.filter, (value) => {
-            context.movieList = value;
+            context.movieList = value.list;
+            context.movieLength = value.total;
         });
+    }
+
+    movieDetail(id: string) {
+        this.router.navigate(['movie', id], {relativeTo: this.activedRouter}).then();
     }
 
     /**
@@ -78,6 +84,7 @@ export class VideoComponent implements OnInit {
      * search
      */
     search() {
+        this.resetPage();
         this.queryMovieByFilter(this);
     }
 
@@ -101,5 +108,14 @@ export class VideoComponent implements OnInit {
                 context.movieInfo.region = [...context.movieInfo.region, {name: item, checked: false}];
             });
         });
+    }
+
+    private resetPage() {
+        this.filter.page = {
+            length: 10000,
+            pageIndex: 0,
+            pageSize: 20,
+            pageSizeOptions: [20]
+        };
     }
 }

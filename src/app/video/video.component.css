@@ -3,3 +3,6 @@
 .movie-content,.movie-pagination{padding-top: 20px;}
 .search-button{height: 80px;}
 .movie-content>mat-grid-list>mat-grid-tile>mat-card{width: 100%;}
+.example-card {max-width: 400px;}
+.movie-content>table{width: 100%;}
+.movie-item:hover{background: rgba(0,0,0,.04);}
