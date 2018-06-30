@@ -5,13 +5,15 @@ import {HttpClient, HttpResponse} from '@angular/common/http';
 import {DialogData} from '../bean/DialogData';
 import {Response} from '../bean/Responce';
 import {Observable} from 'rxjs';
+import {ErrorService} from './error.service';
 
 /**
  * Created by Administrator on 2017/5/28.
  */
 @Injectable()
 export class HttpService {
-    constructor(private httpClient: HttpClient, public dialog: MatDialog) {
+    constructor(private httpClient: HttpClient, public dialog: MatDialog,
+                private errorService: ErrorService) {
     }
 
     private openLoadingDialog(): MatDialogRef<any, any> {
@@ -28,19 +30,20 @@ export class HttpService {
                 if (resolve) {
                     resolve(result.result);
                 } else {
-                    console.log(result.result);
+                    this.errorService.showError(result.result);
                 }
             } else {
                 if (failed) {
                     failed(result.message || 'Business error');
                 } else {
-                    console.error('Business error' + result.message);
+                    this.errorService.showError('Business error' + result.message);
                 }
             }
 
         }, error => {
-            console.error(error);
             loadingDialogRef.close();
+            console.log(error);
+            this.errorService.showError('System busy:' + error.message);
         });
     }
 }

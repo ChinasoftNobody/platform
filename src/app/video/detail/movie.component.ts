@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {Movie} from '../../bean/Movie';
 import {ActivatedRoute, Router} from '@angular/router';
+import {HttpService} from '../../common/http.service';
+import {VideoServer} from '../../config/server.config';
+import {VideoServerKey} from '../../config/video.server.info';
 
 @Component({
     selector: 'app-movie',
@@ -9,10 +12,12 @@ import {ActivatedRoute, Router} from '@angular/router';
     providers: []
 })
 export class MovieComponent implements OnInit {
-    movie: Movie;
+    movie: Movie = new Movie();
 
 
-    constructor(private activeRoute: ActivatedRoute) {
+    constructor(private activeRoute: ActivatedRoute,
+                private httpService: HttpService,
+                private videoServer: VideoServer) {
     }
 
     ngOnInit(): void {
@@ -20,6 +25,16 @@ export class MovieComponent implements OnInit {
     }
 
     private initMovieInfo() {
-        console.log(this.activeRoute.snapshot.paramMap.get('id'));
+        const movieId = this.activeRoute.snapshot.paramMap.get('id');
+        this.initMovie(movieId);
+    }
+
+    private initMovie(movieId: string | null): void {
+        if (movieId === null) {
+            console.error('movie id not found');
+        }
+        this.httpService.post(this.videoServer.getUrl(VideoServerKey.MOVIE_DETAIL), {id: movieId}, (value => {
+            this.movie = value;
+        }));
     }
 }

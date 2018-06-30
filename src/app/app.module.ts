@@ -29,18 +29,23 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatTableModule} from '@angular/material/table';
 import {MatIconModule} from '@angular/material/icon';
 import {MovieComponent} from './video/detail/movie.component';
+import {HeaderComponent} from './common/header/header.component';
+import {HeaderService} from './common/header/header.service';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {ErrorService} from './common/error.service';
+
 
 @NgModule({
     declarations: [
-        AppComponent, CopyrightComponent, VideoComponent, IndexComponent, AppLoadingComponent, MovieComponent
+        AppComponent, CopyrightComponent, VideoComponent, IndexComponent, AppLoadingComponent, MovieComponent, HeaderComponent
     ],
     imports: [
         BrowserModule, RouterModule, AppRouterModule, BrowserAnimationsModule, FormsModule, HttpClientModule,
         MatProgressSpinnerModule, MatGridListModule, MatFormFieldModule, MatInputModule, MatDialogModule, MatCardModule,
         MatExpansionModule, MatPaginatorModule, MatSelectModule, MatCheckboxModule, MatDividerModule, MatListModule,
-        MatButtonModule, MatTableModule, MatIconModule
+        MatButtonModule, MatTableModule, MatIconModule, MatSnackBarModule
     ],
-    providers: [HttpService, DailyServer, VideoServer, HttpClient],
+    providers: [HttpService, DailyServer, VideoServer, HttpClient, HeaderService, ErrorService],
     bootstrap: [AppComponent],
     entryComponents: [AppLoadingComponent]
 })

@@ -1,0 +1,11 @@
+.app-banner{ background: url('../../../assets/imgs/banner.jpg');height: 400px;}
+.app-container{ margin: 0 22%;min-height: 300px;}
+.app-center{ text-align: center;padding-top: 100px;color: #FFFFFF;font-size: 32px;}
+.app-banner-logo{ text-align: center;margin-top: -34px;}
+.app-banner-logo img{ width: 78px;height: 68px;}
+.app-card-list{margin-top: 40px;}
+.app-index-img{ width: 100%;height: 100%;}
+.app-index-img.mat-card-image:first-child{margin: 0;}
+.example-card { background-color: #FFFFFF;text-align: center;padding: 10px;}
+.example-card a{ color: #777;font-size: 24px;text-decoration: none;}
+.example-card:hover{cursor: pointer;}

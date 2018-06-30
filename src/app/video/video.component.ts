@@ -5,6 +5,7 @@ import {VideoServerKey} from '../config/video.server.info';
 import {PageEvent} from '@angular/material';
 import {Movie} from '../bean/Movie';
 import {ActivatedRoute, Router} from '@angular/router';
+import {HeaderService} from '../common/header/header.service';
 
 /**
  * Created by Administrator on 2018/6/19.
@@ -39,7 +40,8 @@ export class VideoComponent implements OnInit {
     constructor(private http: HttpService,
                 private videoServer: VideoServer,
                 private router: Router,
-                private activedRouter: ActivatedRoute) {
+                private activedRouter: ActivatedRoute,
+                private headerService: HeaderService) {
     }
 
     /**
@@ -89,6 +91,7 @@ export class VideoComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        this.headerService.changeTitle('Media', '影视');
         this.queryTypes(this);
         this.queryRegions(this);
         this.queryMovieByFilter(this);
