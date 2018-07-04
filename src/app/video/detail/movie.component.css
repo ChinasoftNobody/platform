@@ -1,2 +1,3 @@
 .movie-content{margin: 0 5%;min-height: 650px;background-color: #FFFFFF;text-align: center;}
 .movie-video{width: 800px;}
+.movie-content>.image-content img{height: 100%;}

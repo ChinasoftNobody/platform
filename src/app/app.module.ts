@@ -33,17 +33,20 @@ import {HeaderComponent} from './common/header/header.component';
 import {HeaderService} from './common/header/header.service';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {ErrorService} from './common/error.service';
+import {CollectComponent} from './collect/collect.component';
+import {MatMenuModule} from '@angular/material';
 
 
 @NgModule({
     declarations: [
-        AppComponent, CopyrightComponent, VideoComponent, IndexComponent, AppLoadingComponent, MovieComponent, HeaderComponent
+        AppComponent, CopyrightComponent, VideoComponent, IndexComponent, AppLoadingComponent, MovieComponent, HeaderComponent,
+        CollectComponent
     ],
     imports: [
         BrowserModule, RouterModule, AppRouterModule, BrowserAnimationsModule, FormsModule, HttpClientModule,
         MatProgressSpinnerModule, MatGridListModule, MatFormFieldModule, MatInputModule, MatDialogModule, MatCardModule,
         MatExpansionModule, MatPaginatorModule, MatSelectModule, MatCheckboxModule, MatDividerModule, MatListModule,
-        MatButtonModule, MatTableModule, MatIconModule, MatSnackBarModule
+        MatButtonModule, MatTableModule, MatIconModule, MatSnackBarModule, MatMenuModule
     ],
     providers: [HttpService, DailyServer, VideoServer, HttpClient, HeaderService, ErrorService],
     bootstrap: [AppComponent],

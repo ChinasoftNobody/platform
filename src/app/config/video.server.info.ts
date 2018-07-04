@@ -5,7 +5,8 @@ export const VideoServerKey = {
     QUERY_BY_FILTER: 'queryByFilter',
     QUERY_TYPES: 'queryTypes',
     QUERY_REGIONS: 'queryRegions',
-    MOVIE_DETAIL: 'movieDetail'
+    MOVIE_DETAIL: 'movieDetail',
+    SUB_IMAGES: 'subImages'
 
 };
 export const VideoServerInfo = {
@@ -31,6 +32,16 @@ export const VideoServerInfo = {
             name: 'movieDetail',
             type: 'post',
             url: '/movie/movie/detail'
+        },
+        {
+            name: 'subImages',
+            type: 'post',
+            url: '/movie/movie/subImages'
+        },
+        {
+            name: 'urlHistory',
+            type: 'post',
+            url: '/movie/collect/urlHistory'
         }
     ]
 };

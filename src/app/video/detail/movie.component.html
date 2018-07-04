@@ -1,4 +1,17 @@
 <div class="movie-content">
-    <!--<video src="../../../assets/video/test.mp4" autoplay="autoplay"></video>-->
-    <video class="movie-video" src="http://localhost:8081/movie/movie/stream"  autoplay="autoplay"></video>
+    <div class="image-content">
+
+        <mat-grid-list cols="5" rowHeight="12:17">
+            <mat-grid-tile [colspan]="2" [rowspan]="2">
+                <img mat-card-image src="{{movie.mainImage}}" alt="{{movie.mainImage}}">
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="1" [rowspan]="1" *ngFor="let image of subImages">
+                <img mat-card-image src="{{image}}" alt="{{image}}">
+            </mat-grid-tile>
+        </mat-grid-list>
+
+    </div>
+    <div class="ftp-url">
+
+    </div>
 </div>

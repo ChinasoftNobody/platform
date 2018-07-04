@@ -13,7 +13,7 @@ import {VideoServerKey} from '../../config/video.server.info';
 })
 export class MovieComponent implements OnInit {
     movie: Movie = new Movie();
-
+    subImages: string[];
 
     constructor(private activeRoute: ActivatedRoute,
                 private httpService: HttpService,
@@ -35,6 +35,9 @@ export class MovieComponent implements OnInit {
         }
         this.httpService.post(this.videoServer.getUrl(VideoServerKey.MOVIE_DETAIL), {id: movieId}, (value => {
             this.movie = value;
+        }));
+        this.httpService.post(this.videoServer.getUrl(VideoServerKey.SUB_IMAGES), {id: movieId}, (value => {
+            this.subImages = value;
         }));
     }
 }
