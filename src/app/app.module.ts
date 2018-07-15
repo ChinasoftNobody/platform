@@ -35,22 +35,29 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {ErrorService} from './common/error.service';
 import {CollectComponent} from './collect/collect.component';
 import {MatMenuModule} from '@angular/material';
+import {CreateModuleDialogComponent} from './collect/create/create-dialog.component';
+import {ConfirmComponent} from './common/confirm/confirm.component';
+import {CollectModuleDetailComponent} from './collect/detail/collect-module-detail.component';
+import {PlanCreateComponent} from './collect/detail/plan/plan-create.component';
+import {MatRadioModule} from '@angular/material/radio';
+import {AppendInputComponent} from './common/input/append-input.component';
 
 
 @NgModule({
     declarations: [
         AppComponent, CopyrightComponent, VideoComponent, IndexComponent, AppLoadingComponent, MovieComponent, HeaderComponent,
-        CollectComponent
+        CollectComponent, CreateModuleDialogComponent, ConfirmComponent, CollectModuleDetailComponent, PlanCreateComponent,
+        AppendInputComponent
     ],
     imports: [
         BrowserModule, RouterModule, AppRouterModule, BrowserAnimationsModule, FormsModule, HttpClientModule,
         MatProgressSpinnerModule, MatGridListModule, MatFormFieldModule, MatInputModule, MatDialogModule, MatCardModule,
         MatExpansionModule, MatPaginatorModule, MatSelectModule, MatCheckboxModule, MatDividerModule, MatListModule,
-        MatButtonModule, MatTableModule, MatIconModule, MatSnackBarModule, MatMenuModule
+        MatButtonModule, MatTableModule, MatIconModule, MatSnackBarModule, MatMenuModule, MatRadioModule
     ],
     providers: [HttpService, DailyServer, VideoServer, HttpClient, HeaderService, ErrorService],
     bootstrap: [AppComponent],
-    entryComponents: [AppLoadingComponent]
+    entryComponents: [AppLoadingComponent, CreateModuleDialogComponent, ConfirmComponent, PlanCreateComponent]
 })
 export class AppModule {
 }

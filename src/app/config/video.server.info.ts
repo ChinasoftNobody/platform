@@ -6,7 +6,13 @@ export const VideoServerKey = {
     QUERY_TYPES: 'queryTypes',
     QUERY_REGIONS: 'queryRegions',
     MOVIE_DETAIL: 'movieDetail',
-    SUB_IMAGES: 'subImages'
+    SUB_IMAGES: 'subImages',
+    URL_HISTORY: 'urlHistory',
+    COLLECT_CREATE_MODULE: 'createModule',
+    COLLECT_MODULE_QUERY: 'queryModule',
+    COLLECT_DELETE_MODULE: 'deleteModule',
+    MODULE_PLAN_QUERY: 'queryAllPlan',
+    COLLECT_CREATE_PLAN: 'createPlan'
 
 };
 export const VideoServerInfo = {
@@ -42,6 +48,31 @@ export const VideoServerInfo = {
             name: 'urlHistory',
             type: 'post',
             url: '/movie/collect/urlHistory'
+        },
+        {
+            name: 'createModule',
+            type: 'post',
+            url: '/movie/collect/module/create'
+        },
+        {
+            name: 'queryModule',
+            type: 'post',
+            url: '/movie/collect/module/query'
+        },
+        {
+            name: 'deleteModule',
+            type: 'post',
+            url: '/movie/collect/module/delete'
+        },
+        {
+            name: 'queryAllPlan',
+            type: 'post',
+            url: '/movie/collect/module/plan/queryByModuleId'
+        },
+        {
+            name: 'createPlan',
+            type: 'post',
+            url: '/movie/collect/module/plan/createPlan'
         }
     ]
 };

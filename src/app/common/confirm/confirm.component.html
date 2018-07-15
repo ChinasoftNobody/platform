@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>{{title}}</h1>
+<div mat-dialog-content>
+    <p>{{confirmInfo.message}}</p>
+</div>
+<div mat-dialog-actions>
+    <button *ngIf="confirmInfo.cancel" mat-button (click)="cancel()">Cancel</button>
+    <button mat-button [color]="'primary'" (click)="confirm()">Ok</button>
+</div>

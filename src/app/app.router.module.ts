@@ -4,6 +4,7 @@ import {IndexComponent} from './index/index.component';
 import {VideoComponent} from './video/video.component';
 import {MovieComponent} from './video/detail/movie.component';
 import {CollectComponent} from './collect/collect.component';
+import {CollectModuleDetailComponent} from './collect/detail/collect-module-detail.component';
 
 /**
  * Created by Administrator on 2017/5/28.
@@ -13,7 +14,8 @@ const routes: Routes = [
     {path: 'index', component: IndexComponent},
     {path: 'video', component: VideoComponent},
     {path: 'video/movie/:id', component: MovieComponent},
-    {path: 'collect', component: CollectComponent}
+    {path: 'collect', component: CollectComponent},
+    {path: 'collect/:id', component: CollectModuleDetailComponent}
 ];
 
 @NgModule({

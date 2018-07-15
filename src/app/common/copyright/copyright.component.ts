@@ -9,6 +9,6 @@ import {Router} from '@angular/router';
     templateUrl: './copyright.component.html',
     styleUrls: ['./copyright.component.css']
 })
-export class CopyrightComponent{
+export class CopyrightComponent {
 
 }

@@ -1,0 +1,25 @@
+<div class="input-content">
+    <h4>{{title||'NA'}}</h4>
+    <div class="action-content">
+        <button mat-icon-button color="primary" *ngIf="!edit" (click)="editData()">
+            <mat-icon aria-label="Edit">edit</mat-icon>
+        </button>
+        <button mat-icon-button color="primary" *ngIf="edit" (click)="okData()">
+            <mat-icon aria-label="Ok">save</mat-icon>
+        </button>
+    </div>
+    <mat-divider></mat-divider>
+    <mat-form-field class="example-full-width" *ngFor="let item of data; let i=index">
+        <input matInput [ngModel]="data[i]" *ngIf="edit" (change)="change($event,i)">
+        <input matInput [ngModel]="data[i]" *ngIf="!edit" disabled>
+        <button mat-button *ngIf="edit" matSuffix mat-icon-button aria-label="Clear" (click)="remove(i)">
+            <mat-icon>close</mat-icon>
+        </button>
+
+    </mat-form-field>
+
+
+    <button class="mat-icon-button" mat-icon-button (click)="add()" *ngIf="edit">
+        <mat-icon aria-label="add">add</mat-icon>
+    </button>
+</div>

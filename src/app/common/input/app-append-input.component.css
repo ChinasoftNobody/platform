@@ -1,0 +1,4 @@
+.input-content>*{width: 100%;}
+.mat-icon-button{max-width: 40px;}
+.input-content>.action-content{text-align: right;}
+.input-content>.action-content>button{max-width: 40px;}

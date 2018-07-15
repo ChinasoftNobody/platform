@@ -1,0 +1,10 @@
+.plan-create-content{min-width: 600px;overflow-y: auto;max-height:800px;max-width: 650px}
+.mat-dialog-container>*{width: 100%;}
+app-append-input{width: 100%;}
+.mat-dialog-action{text-align: center;margin-top: 10px;}
+.mat-dialog-action>button{margin: 0 10px}
+
+.example-radio-group{width: 100%;}
+.example-radio-button{min-width: 20%;}
+
+.mat-icon-button{max-width: 40px;}

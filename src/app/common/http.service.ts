@@ -36,7 +36,7 @@ export class HttpService {
                 if (failed) {
                     failed(result.message || 'Business error');
                 } else {
-                    this.errorService.showError('Business error' + result.message);
+                    this.errorService.showError('Business error: ' + result.message);
                 }
             }
 

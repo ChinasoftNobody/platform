@@ -1,0 +1,32 @@
+<div class="plan-create-content">
+    <div class="mat-dialog-title">
+        <strong>Create collect plan</strong>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="mat-dialog-container">
+        <mat-form-field class="example-full-width">
+            <input required matInput placeholder="type a plan name" [(ngModel)]="planInfo.name">
+            <mat-error>{{errorMessage}}</mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <textarea matInput placeholder="description" [(ngModel)]="planInfo.description">
+            </textarea>
+        </mat-form-field>
+        <mat-divider></mat-divider>
+        <!-- collect info -->
+        <h4>Cron</h4>
+        <mat-radio-group class="example-radio-group" [(ngModel)]="planInfo.cron">
+            <mat-radio-button class="example-radio-button" *ngFor="let cron of crons" [value]="cron">
+                {{cron}}
+            </mat-radio-button>
+        </mat-radio-group>
+        <mat-divider></mat-divider>
+        <app-append-input [title]="'Root Urls'" [data]="planInfo.urls" (dataEmitter)="resolveUrls($event)"></app-append-input>
+
+    </div>
+
+    <div class="mat-dialog-action">
+        <button mat-raised-button color="primary" (click)="create()">Create</button>
+        <button mat-raised-button (click)="cancel()">Cancel</button>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+<div class="plan-content">
+    <div class="plan-menu">
+        <button mat-button color="primary" (click)="createPlan()">Create</button>
+    </div>
+    <mat-divider></mat-divider>
+    <mat-list>
+        <mat-list-item *ngFor="let plan of planList">
+            <h4 mat-line>{{plan.name}}</h4>
+            <p mat-line> {{plan.description}} </p>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+    </mat-list>
+
+</div>

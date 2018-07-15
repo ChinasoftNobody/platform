@@ -3,4 +3,21 @@
         <button mat-button color="primary" (click)="createModule()">Create</button>
     </div>
     <mat-divider></mat-divider>
+    <div class="module-content">
+        <mat-grid-list cols="5" rowHeight="3:2" gutterSize="40" class="app-card-list">
+            <mat-grid-tile *ngFor="let module of modules">
+                <mat-card class="example-card">
+                    <mat-card-content (click)="moduleDetail(module.id)">
+                        <h1>{{module.name}}</h1>
+                        <p>{{module.description}}</p>
+                    </mat-card-content>
+                    <mat-card-actions>
+                        <button mat-icon-button (click)="deleteModule(module.id)">
+                            <mat-icon aria-label="Delete">delete</mat-icon>
+                        </button>
+                    </mat-card-actions>
+                </mat-card>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </div>
 </div>

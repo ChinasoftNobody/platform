@@ -1,3 +1,18 @@
-<div class="module-create-content">
+<div class="mat-dialog-title">
+    <strong>Create collect module</strong>
+</div>
+<div class="mat-dialog-container">
+    <mat-form-field class="example-full-width">
+        <input required matInput placeholder="type a module name" [(ngModel)]="module.name">
+        <mat-error>{{errorMessage}}</mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <textarea matInput placeholder="description" [(ngModel)]="module.description">
+        </textarea>
+    </mat-form-field>
+</div>
 
+<div class="mat-dialog-action">
+    <button mat-raised-button color="primary" (click)="createModule()">Create</button>
+    <button mat-raised-button (click)="createCancel()">Cancel</button>
 </div>
